@@ -41,7 +41,7 @@ const formatXml = () => {
     const parser = new XMLParser({
       ignoreAttributes: false,
       attributeNamePrefix: '@_',
-      isArray: (name, jpath, isLeafNode, isAttribute) => false
+      isArray: () => false
     })
     const builder = new XMLBuilder({
       format: true,
