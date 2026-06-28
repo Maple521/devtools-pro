@@ -53,10 +53,12 @@ const convertedDate = computed(() => {
   
   if (!date.isValid()) return { error: '无效的日期' }
   
+  const dateWithRelativeTime = date as typeof date & { fromNow: () => string }
+
   return {
     formatted: date.format('YYYY-MM-DD HH:mm:ss'),
     utc: date.utc().format('YYYY-MM-DD HH:mm:ss'),
-    relative: date.fromNow(),
+    relative: dateWithRelativeTime.fromNow(),
     isSeconds
   }
 })

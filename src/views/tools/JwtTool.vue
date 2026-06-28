@@ -40,7 +40,7 @@ const decodedToken = computed<DecodedToken | null>(() => {
     }
     
     const header = JSON.parse(atob(parts[0]))
-    const payload = jwtDecode<JwtPayload>(token.value) as JwtPayload
+    const payload = (jwtDecode(token.value) as JwtPayload | null) ?? {}
     const signature = parts[2]
     
     const isValid = parts.length === 3 && header && payload
